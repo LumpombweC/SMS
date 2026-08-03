@@ -7,16 +7,21 @@ class Student {
     private $year;
 
     public function __construct($studentnumber, $fullname, $programme, $year) {
-        $this->studentnumber = $studentnumber   ;
+        $this->studentnumber = self::generateStudentNumber();
         $this->fullname = $fullname;
         $this->programme = $programme;
         $this->year = $year;
     }
 
-    public function getStudentNumber() {
-        return $this->studentnumber;
+     // Implementation for generating student number
+    private static $counter = 0000;
+    public function generateStudentNumber():string
+    {
+        self::$counter++;
+        $year = date('Y');
+        return sprintf('LGU-'.$year.'-%03d', self::$counter);
     }
-
+    
     public function getFullName() {
         return $this->fullname;
     }
