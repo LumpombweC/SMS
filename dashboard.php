@@ -39,13 +39,13 @@ $students = $database->getRecentStudents();
             <div class="brand">COLLEGE ADMIN</div>
             <nav class="nav-links" aria-label="Sidebar navigation">
                 <a class="nav-item active" href="#">Dashboard</a>
-                <a class="nav-item" href="#">Students</a>
-                <a class="nav-item" href="#">Courses</a>
-                <a class="nav-item" href="#">Enrolment</a>
-                <a class="nav-item" href="#">Grades</a>
-                <a class="nav-item" href="#">Academic Summary</a>
-                <a class="nav-item" href="#">Reports</a>
-                <a class="nav-item" href="#">Settings</a>
+                <a class="nav-item" href="Student.php">Students</a>
+                <a class="nav-item" href="Course.php">Courses</a>
+                <a class="nav-item" href="Enrolment.php">Enrolment</a>
+                <a class="nav-item" href="Grades.php">Grades</a>
+                <a class="nav-item" href="AcademicSummary.php">Academic Summary</a>
+                <a class="nav-item" href="Reports.php">Reports</a>
+                <a class="nav-item" href="Settings.php">Settings</a>
             </nav>
         </aside>
 
@@ -73,7 +73,7 @@ $students = $database->getRecentStudents();
                         <p class="stat-number">0</p>
                     </article>
                     <article class="stat-card">
-                        <p class="stat-label">Enrolments</p>
+                        <p class="stat-label">Enrolment</p>
                         <p class="stat-number">0</p>
                     </article>
                 </section>
