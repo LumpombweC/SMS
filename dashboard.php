@@ -11,11 +11,19 @@ if (($_SESSION['user']['role'] ?? '') !== 'administrator') {
     exit;
 }
 
+require_once __DIR__ . '/src/Database.php';
+
 $message = $_SESSION['flash_message'] ?? 'You are logged in successfully.';
 unset($_SESSION['flash_message']);
 
 $username = $_SESSION['user']['username'] ?? 'Administrator';
+date_default_timezone_set('Africa/Lusaka');
 $dateLabel = date('l, F j, Y');
+
+$database = new Database();
+$students = $database->getRecentStudents();
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,48 +34,80 @@ $dateLabel = date('l, F j, Y');
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="page-shell dashboard-shell">
-        <div class="dashboard-card">
-            <header class="dashboard-header">
+    <div class="admin-shell">
+        <aside class="sidebar">
+            <div class="brand">COLLEGE ADMIN</div>
+            <nav class="nav-links" aria-label="Sidebar navigation">
+                <a class="nav-item active" href="#">Dashboard</a>
+                <a class="nav-item" href="#">Students</a>
+                <a class="nav-item" href="#">Courses</a>
+                <a class="nav-item" href="#">Enrolment</a>
+                <a class="nav-item" href="#">Grades</a>
+                <a class="nav-item" href="#">Academic Summary</a>
+                <a class="nav-item" href="#">Reports</a>
+                <a class="nav-item" href="#">Settings</a>
+            </nav>
+        </aside>
+
+        <main class="main-panel">
+            <header class="topbar">
                 <div>
                     <p class="eyebrow">Administrator access</p>
-                    <h1>Admin Dashboard</h1>
-                    <p class="subtitle">Welcome back, <?php echo htmlspecialchars($username, ENT_QUOTES, 'UTF-8'); ?>. Today is <?php echo htmlspecialchars($dateLabel, ENT_QUOTES, 'UTF-8'); ?>.</p>
+                    <h1>Dashboard</h1>
                 </div>
-                <a class="logout-link" href="Login.php?logout=1">Log out</a>
+                <div class="topbar-actions">
+                    <span class="topbar-pill">Admin </span>
+                    <a class="logout-link" href="Login.php?logout=1">Logout</a>
+                </div>
             </header>
 
-            <div class="dashboard-message">
-                <p><?php echo htmlspecialchars($message, ENT_QUOTES, 'UTF-8'); ?></p>
-            </div>
+            <section class="dashboard-content" aria-label="Administrator dashboard content">
+               
+                <section class="stats-grid" aria-label="Administrative overview">
+                    <article class="stat-card">
+                        <p class="stat-label">Students</p>
+                        <p class="stat-number">0</p>
+                    </article>
+                    <article class="stat-card">
+                        <p class="stat-label">Courses</p>
+                        <p class="stat-number">0</p>
+                    </article>
+                    <article class="stat-card">
+                        <p class="stat-label">Enrolments</p>
+                        <p class="stat-number">0</p>
+                    </article>
+                </section>
 
-            <section class="stats-grid" aria-label="Administrative overview">
-                <article class="stat-card">
-                    <h2>Student Records</h2>
-                    <p class="stat-number">120</p>
-                    <p class="stat-caption">Active student profiles tracked</p>
-                </article>
-                <article class="stat-card">
-                    <h2>Courses</h2>
-                    <p class="stat-number">18</p>
-                    <p class="stat-caption">Available academic offerings</p>
-                </article>
-                <article class="stat-card">
-                    <h2>Enrollments</h2>
-                    <p class="stat-number">94</p>
-                    <p class="stat-caption">Students currently enrolled</p>
-                </article>
+                <section class="panel-card">
+                    <div class="panel-heading">
+                        <h3>Recent Students</h3>
+                        <a href="#">View all</a>
+                    </div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Student No</th>
+                                    <th>Name</th>
+                                    <th>Course</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($students as $student) : ?>
+                                    <tr>
+                                        <td><?php echo htmlspecialchars($student['studentNo'], ); ?></td>
+                                        <td><?php echo htmlspecialchars($student['name'], ); ?></td>
+                                        <td><?php echo htmlspecialchars($student['course'], ); ?></td>
+                                        <td><span class="status-pill"><?php echo htmlspecialchars($student['status'],); ?></span></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
             </section>
-
-            <section class="dashboard-actions" aria-label="Administrator quick actions">
-                <h2>Quick actions</h2>
-                <ul>
-                    <li>Review new student applications</li>
-                    <li>Monitor academic performance reports</li>
-                    <li>Manage course assignments</li>
-                </ul>
-            </section>
-        </div>
+        </main>
     </div>
 </body>
 </html>
