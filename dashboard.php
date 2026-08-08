@@ -99,7 +99,7 @@ $students = $database->getRecentStudents();
                                         <td><?php echo htmlspecialchars($student['studentNo'], ); ?></td>
                                         <td><?php echo htmlspecialchars($student['name'], ); ?></td>
                                         <td><?php echo htmlspecialchars($student['course'], ); ?></td>
-                                        <td><span class="status-pill"><?php echo htmlspecialchars($student['status'],); ?></span></td>
+                                       
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
