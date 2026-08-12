@@ -62,20 +62,32 @@ $students = $database->getRecentStudents();
             </header>
 
             <section class="dashboard-content" aria-label="Administrator dashboard content">
-               
+                <div class="wireframe-label">
+                WIREFRAME - PAGE: DASHBOARD
+                </div>
+
+                <section class="welcome-card">
+    <div>
+        <h2>Welcome, Administrator</h2>
+        <p>Overview of the student records system</p>
+    </div>
+</section>
                 <section class="stats-grid" aria-label="Administrative overview">
-                    <article class="stat-card">
-                        <p class="stat-label">Students</p>
-                        <p class="stat-number">0</p>
-                    </article>
-                    <article class="stat-card">
-                        <p class="stat-label">Courses</p>
-                        <p class="stat-number">0</p>
-                    </article>
-                    <article class="stat-card">
-                        <p class="stat-label">Enrolment</p>
-                        <p class="stat-number">0</p>
-                    </article>
+                    <article class="stat-card stat-students">
+    <p class="stat-label">Students</p>
+    <p class="stat-number">0</p>
+    <p class="stat-description">Total registered students</p>
+</article>
+                    <article class="stat-card stat-courses">
+    <p class="stat-label">Courses</p>
+    <p class="stat-number">0</p>
+    <p class="stat-description">Available courses</p>
+</article>
+                    <article class="stat-card stat-enrolment">
+    <p class="stat-label">Enrolment</p>
+    <p class="stat-number">0</p>
+    <p class="stat-description">Current enrolments</p>
+</article>
                 </section>
 
                 <section class="panel-card">
