@@ -14,7 +14,7 @@ class Database
   
     private function __construct()
     {
-        // Load configuration using environment variables for high security
+   
         $host = getenv('DB_HOST') ?: '127.0.0.1';
         $port = getenv('DB_PORT') ?: '3306';
         $dbname = getenv('DB_NAME') ?: 'students_records';
@@ -24,7 +24,6 @@ class Database
    
         $dsn = "mysql:host={$host};port={$port};dbname={$dbname};charset=utf8mb4";
 
-        // Secure, high-performance PDO configuration settings
         $options = [
             PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION, 
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,       
