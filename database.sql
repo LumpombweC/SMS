@@ -26,10 +26,10 @@ CREATE TABLE enrolments (
     FOREIGN KEY (student_id) REFERENCES students(id),
     FOREIGN KEY (course_id) REFERENCES courses(id)
 );
-INSERT INTO students (student_number, first_name, last_name, programme)
+INSERT INTO students (student_number, first_name, last_name, programme,Year_of_Study)
 VALUES
-('2026001','Lewis','Chingwamari','Computer Science'),
-('2026002','Kieth','Tim','Computer Science');
+('2026001','Lewis','Chingwamari','Computer Science',2),
+('2026002','Kieth','Tim','Computer Science',3);
 
 INSERT INTO courses (course_code, course_name, credit_hours)
 VALUES
