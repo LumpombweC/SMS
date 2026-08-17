@@ -108,31 +108,41 @@ button:hover {
     display: flex;
     flex-direction: column;
     gap: 28px;
+    
 }
 
 .brand {
     font-size: 1.06rem;
     font-weight: 700;
     letter-spacing: 0.12em;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #1e293b;
 }
 
 .nav-links {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
 }
 
 .nav-item {
     padding: 12px 14px;
     border-radius: 10px;
+    border: 1px solid transparent;
     color: #cbd5e1;
     text-decoration: none;
     font-weight: 600;
 }
 
-.nav-item.active,
-.nav-item:hover {
+.nav-item.active {
     background: #1d4ed8;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(29, 78, 216, 0.25);
+}
+
+.nav-item:hover {
+    background: #172554;
+    border-color: #1e40af;
     color: #ffffff;
 }
 
@@ -203,6 +213,8 @@ button:hover {
     justify-content: space-between;
     gap: 16px;
     align-items: center;
+    border-left: 4px solid #2563eb;
+transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .welcome-card h2 {
@@ -249,6 +261,7 @@ button:hover {
     border-radius: 16px;
     padding: 22px;
     box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+    
 }
 
 .stat-label {
@@ -295,17 +308,28 @@ button:hover {
 table {
     width: 100%;
     border-collapse: collapse;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 th, td {
-    padding: 12px 10px;
+    padding: 14px 12px;
     text-align: left;
     border-bottom: 1px solid #e2e8f0;
 }
 
 th {
-    color: #64748b;
-    font-size: 0.9rem;
+    color: #334155;
+    font-size: 0.85rem;
+    font-weight: 700;
+    background: #f8fafc;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+tbody tr:hover {
+    background: #f8fafc;
 }
 
 .status-pill {
@@ -316,6 +340,26 @@ th {
     border-radius: 999px;
     font-size: 0.85rem;
     font-weight: 600;
+}
+
+
+
+.stat-description {
+    margin: 6px 0 0;
+    color: #64748b;
+    font-size: 0.85rem;
+}
+
+.stat-students {
+    border-top: 4px solid #2563eb;
+}
+
+.stat-courses {
+    border-top: 4px solid #0d9488;
+}
+
+.stat-enrolment {
+    border-top: 4px solid #7c3aed;
 }
 
 @media (max-width: 920px) {
@@ -346,4 +390,7 @@ th {
     .action-buttons {
         width: 100%;
     }
+}
+tbody tr:last-child td {
+    border-bottom: none;
 }
