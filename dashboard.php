@@ -62,10 +62,7 @@ $students = $database->getRecentStudents();
             </header>
 
             <section class="dashboard-content" aria-label="Administrator dashboard content">
-                <div class="wireframe-label">
-                WIREFRAME - PAGE: DASHBOARD
-                </div>
-
+            
                 <section class="welcome-card">
     <div>
         <h2>Welcome, Administrator</h2>
