@@ -106,10 +106,9 @@ $students = $database->getRecentStudents();
                             <tbody>
                                 <?php foreach ($students as $student) : ?>
                                     <tr>
-<td><?php echo htmlspecialchars($row['student_number'] ?? ''); ?></td>
-<td><?php echo htmlspecialchars(($row['first_name'] ?? '') . ' ' . ($row['last_name'] ?? '')); ?></td>
-<td><?php echo htmlspecialchars($row['course_name'] ?? ''); ?></td>
-
+                                     <td><?php echo htmlspecialchars($row['student_number'] ?? ''); ?></td>
+                                     <td><?php echo htmlspecialchars(($row['first_name'] ?? '') . ' ' . ($row['last_name'] ?? '')); ?></td>
+                                    <td><?php echo htmlspecialchars($row['course_name'] ?? ''); ?></td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
