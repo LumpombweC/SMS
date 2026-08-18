@@ -8,16 +8,6 @@ if (!isset($_SESSION['user'])) {
 
 if (($_SESSION['user']['role'] ?? '') !== 'administrator') {
     header('Location: Login.php');
-    exit;<?php
-session_start();
-
-if (!isset($_SESSION['user'])) {
-    header('Location: Login.php');
-    exit;
-}
-
-if (($_SESSION['user']['role'] ?? '') !== 'administrator') {
-    header('Location: Login.php');
     exit;
 }
 
@@ -30,7 +20,7 @@ $username = $_SESSION['user']['username'] ?? 'Administrator';
 date_default_timezone_set('Africa/Lusaka');
 $dateLabel = date('l, F j, Y');
 
-$database =  Database::getInstance();
+$database = Database::getInstance();
 $students = $database->getRecentStudents();
 
 
@@ -106,9 +96,9 @@ $students = $database->getRecentStudents();
                             <tbody>
                                 <?php foreach ($students as $student) : ?>
                                     <tr>
-                                     <td><?php echo htmlspecialchars($row['student_number'] ?? ''); ?></td>
-                                     <td><?php echo htmlspecialchars(($row['first_name'] ?? '') . ' ' . ($row['last_name'] ?? '')); ?></td>
-                                    <td><?php echo htmlspecialchars($row['course_name'] ?? ''); ?></td>
+                                     <td><?php echo htmlspecialchars($student['student_number'] ?? ''); ?></td>
+                                     <td><?php echo htmlspecialchars(($student['first_name'] ?? '') . ' ' . ($student['last_name'] ?? '')); ?></td>
+                                    <td><?php echo htmlspecialchars($student['course_name'] ?? ''); ?></td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
@@ -121,22 +111,7 @@ $students = $database->getRecentStudents();
 </body>
 </html>
 
-}
 
-require_once __DIR__ . '/src/Database.php';
-
-$message = $_SESSION['flash_message'] ?? 'You are logged in successfully.';
-unset($_SESSION['flash_message']);
-
-$username = $_SESSION['user']['username'] ?? 'Administrator';
-date_default_timezone_set('Africa/Lusaka');
-$dateLabel = date('l, F j, Y');
-
-$database = new Database();
-$students = $database->getRecentStudents();
-
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
