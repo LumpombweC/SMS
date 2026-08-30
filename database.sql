@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS courses (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
-CREATE TABLE IF NOT EXISTS enrolments (
+CREATE TABLE IF NOT EXISTS enrollments (
     id INT AUTO_INCREMENT PRIMARY KEY,
     student_id INT NOT NULL,
     course_id INT NOT NULL,
@@ -52,7 +52,7 @@ VALUES
 ('CSC205', 'Database Systems', 3)
 ON DUPLICATE KEY UPDATE course_code=course_code;
 
-INSERT INTO enrolments (student_id, course_id, grade)
+INSERT INTO enrollments (student_id, course_id, grade)
 VALUES
 (1, 1, 'A'),
 (1, 2, 'B+'),
